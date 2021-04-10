@@ -12,7 +12,7 @@ export class EmployeeService {
     private readonly httpService: HttpService
   ) { }
 
-  getEmployees(): Observable<Employee[]> {
-    return this.httpService.get<Employee[]>('/employee');
+  getEmployees(search: string): Observable<Employee[]> {
+    return this.httpService.get<Employee[]>(`/employee?search=${search}`);
   }
 }

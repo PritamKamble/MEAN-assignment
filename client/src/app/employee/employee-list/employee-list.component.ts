@@ -19,9 +19,9 @@ export class EmployeeListComponent implements OnInit {
     this.getEmployee();
   }
 
-  getEmployee() {
+  getEmployee(search: string = '') {
     this.isLoading = true;
-    this.employeeService.getEmployees().subscribe((res) => {
+    this.employeeService.getEmployees(search).subscribe((res) => {
       this.employees = res;
       this.isLoading = false;
     }, () => {
