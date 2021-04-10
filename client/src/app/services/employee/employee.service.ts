@@ -15,4 +15,8 @@ export class EmployeeService {
   getEmployees(search: string): Observable<Employee[]> {
     return this.httpService.get<Employee[]>(`/employee?search=${search}`);
   }
+
+  createEmployees(body: Employee): Observable<Employee[]> {
+    return this.httpService.post<Employee[]>(`/employee`, body);
+  }
 }

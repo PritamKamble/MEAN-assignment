@@ -1,5 +1,8 @@
 <div class="container">
     <div *ngIf="isLoading">...loading</div>
+    <div class="m-4 float-right">
+        <button routerLink="add" class="btn btn-primary" type="button">Add Employee</button>
+    </div>
     <div class="search m-4">
         <input placeholder="type employee name/city here" #search (keyup)="getEmployee(search.value.trim())" class="form-control" type="text">
     </div>
