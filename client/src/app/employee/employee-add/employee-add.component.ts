@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 
@@ -8,38 +9,23 @@ import { EmployeeService } from 'src/app/services/employee/employee.service';
   templateUrl: './employee-add.component.html',
   styleUrls: ['./employee-add.component.css']
 })
-export class EmployeeAddComponent implements OnInit {
+export class EmployeeAddComponent {
 
   employeeForm!: FormGroup;
 
   constructor(
-    private readonly fb: FormBuilder,
     private readonly employeeService: EmployeeService,
-    private readonly toastr: ToastrService
+    private readonly toastr: ToastrService,
+    private readonly router: Router,
   ) {
-    this.buildForm();
-  }
-
-  buildForm() {
-    this.employeeForm = this.fb.group({
-      name: [null, [Validators.required, Validators.minLength(4)]],
-      phone: [null, [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
-      address: this.fb.group({
-        city: [null],
-        line1: [null],
-        line2: [null],
-        postalCode: [null],
-      })
-    });
-  }
-
-  ngOnInit(): void {
+    this.employeeForm = this.employeeService.getEmployeeForm();
   }
 
   submit() {
     if (this.employeeForm.valid) {
       this.employeeService.createEmployees(this.employeeForm.value).subscribe((res) => {
         this.toastr.success('Employee added!');
+        this.router.navigate(['/']);
       }, () => {
         this.toastr.error('Something went wrong!');
       });

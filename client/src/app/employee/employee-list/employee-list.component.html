@@ -16,6 +16,7 @@
                 <th scope="col">Address 1</th>
                 <th scope="col">Address 2</th>
                 <th scope="col">Postal code</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
                 <td>{{emp.address.line1}}</td>
                 <td>{{emp.address.line2}}</td>
                 <td>{{emp.address.postalCode}}</td>
+                <td> <button [routerLink]="emp._id + '/edit'" class="btn btn-primary" type="button">Edit</button> </td>
             </tr>
         </tbody>
     </table>

@@ -18,4 +18,8 @@ export class HttpService {
   post<T>(path: string, body: any) {
     return this.http.post<T>(`${environment.hostURL}${path}`, body);
   }
+
+  put<T>(path: string, body: any) {
+    return this.http.put<T>(`${environment.hostURL}${path}`, body);
+  }
 }
