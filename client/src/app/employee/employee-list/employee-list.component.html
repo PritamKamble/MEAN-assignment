@@ -1,0 +1,30 @@
+<div class="container">
+    <div *ngIf="isLoading">...loading</div>
+    <div class="search m-4">
+        <input class="form-control" type="text">
+    </div>
+    <table *ngIf="!isLoading" class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">City</th>
+                <th scope="col">Address 1</th>
+                <th scope="col">Address 2</th>
+                <th scope="col">Postal code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employees">
+                <th scope="row">{{emp.id}}</th>
+                <td>{{emp.name}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.address.city}}</td>
+                <td>{{emp.address.line1}}</td>
+                <td>{{emp.address.line2}}</td>
+                <td>{{emp.address.postalCode}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
