@@ -6,6 +6,7 @@ exports.findAll = async (search) => {
         result = await Employee.find({
             $or: [
                 { name: { $regex: search, $options: "i" } },
+                { "address.city": { $regex: search, $options: "i" } },
             ]
         })
     } else {

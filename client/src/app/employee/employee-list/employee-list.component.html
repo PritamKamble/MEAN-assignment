@@ -1,7 +1,7 @@
 <div class="container">
     <div *ngIf="isLoading">...loading</div>
     <div class="search m-4">
-        <input placeholder="type employee name here" #search (keyup)="getEmployee(search.value.trim())" class="form-control" type="text">
+        <input placeholder="type employee name/city here" #search (keyup)="getEmployee(search.value.trim())" class="form-control" type="text">
     </div>
     <table *ngIf="!isLoading" class="table">
         <thead>
