@@ -1,7 +1,17 @@
 const Employee = require('./employee.model');
 
-exports.findAll = async () => {
-    return await Employee.find();
+exports.findAll = async (search) => {
+    let result;
+    if (search) {
+        result = await Employee.find({
+            $or: [
+                { name: { $regex: search, $options: "i" } },
+            ]
+        })
+    } else {
+        result = await Employee.find();
+    }
+    return result;
 }
 
 exports.create = async (doc) => {

@@ -1,7 +1,7 @@
 const { findAll, create } = require("./employee.service");
 
 exports.getEmployees = async (req, res, next) => {
-    const result = await findAll();
+    let result = await findAll(req.query.search);
     res.status(200).json(result);
 };
 
