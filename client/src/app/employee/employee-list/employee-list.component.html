@@ -30,6 +30,10 @@
                 <td>{{emp.address.postalCode}}</td>
                 <td> <button [routerLink]="emp._id + '/edit'" class="btn btn-primary" type="button">Edit</button> </td>
             </tr>
+
+            <tr *ngIf="search.value && !employees.length">
+                No match found
+            </tr>
         </tbody>
     </table>
 </div>
